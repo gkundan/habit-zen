@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="log_container">
+        <div class="entry-log">
+          <h2>Add Entry For <%=title %></h2>
+          <div class="entry-form">
+            <form method="POST" action="/habit/<%= habit._id %>/log">
+              <div class="form-group">
+                <label for="entry-date">Date:</label>
+                <input type="date" class="form-control" id="entry-date" name="date" required />
+              </div>
+              <div class="form-group">
+                <label for="entry-action">Action:</label>
+                <select class="form-control" id="entry-action" name="action" required>
+                  <option value="Done">Done</option>
+                  <option value="Not Done">Not Done</option>
+                  <option value="No Action">No Action</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Add Entry</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="log_container">
+        <div class="update-log">
+          <h2>Habit Log Of <%= user.name %></h2>
+          <% if (log && log.length) { %>
+          <div class="calendar-container">
+            <div id="calendar"></div>
+          </div>
+          <% } else { %>
+          <p>No log entries found for this habit.</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Load FullCalendar library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.5/index.global.min.js" integrity="sha512-msf87GoBgo6wsVj7CMhInBkfANiREgSpEi70QxdhSy76PDU2b3I5PrapLDmRHVV/ycCoQATfgGeO/JbGgS7dUA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script>
+  // Get habit log entries
+  const logEntries = JSON.parse(`<%- JSON.stringify(log) %>`);
+  console.log("from habit log", logEntries);
+
+  // Get start and end dates of current week
+  const startOfWeek = moment().startOf("week").format("YYYY-MM-DD");
+  const endOfWeek = moment().endOf("week").format("YYYY-MM-DD");
+
+  // Create calendar with habit log entries for current week
+  const calendarEl = document.getElementById("calendar");
+  console.log(calendarEl); // Check if calendarEl is pointing to the correct element
+  const calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: "listWeek",
+    visibleRange: {
+      start: startOfWeek,
+      end: endOfWeek,
+    },
+    events: logEntries.map((entry) => ({
+      title: entry.title,
+      start: moment(entry.start).format("YYYY-MM-DD"),
+      className: entry.className,
+    })),
+    eventOrder: "start", // order events by their start date/time
+  });
+
+  console.log(calendar.title);
+  calendar.render();
+</script>

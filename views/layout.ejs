@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="/css/home.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;700&family=Poppins:ital,wght@0,300;0,800;1,100&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/habitList.css" />
+    <link rel="stylesheet" type="text/css" href="/css/habitLog.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-pzjw8C6TZf6An5E4n6r0y1Gv2RCDZ/r9yo7Sfaiu3Ksd5SWF/y3Y6pV4t6I6D00M"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar" style="background-color: #516BEB;">
+      <div >
+        <ul class="nav-links">
+          <h1>HabitZen </h1>
+          <li class="center"><a href="/">Home</a></li>
+          <li class="upward"><a href="/signIn">SignIn</a></li>
+          <li class="forward"><a href="/habitlist">habitList</a></li>
+        </ul>
+      
+      </div>
+            
+    </nav>
+    <main><%- body %></main>
+    <%- include('footer'); -%>
+    <script src="/js/main.js"></script>
+    <!-- //  bootstrap  -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+      integrity="sha384-4j8CZN5Ck+1BMoEz8x8QvSKDnx5EE1FpsYS4G1tLnqvaHhn7ILWLz1iNSUW63N2j"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-pzjw8C6TZf6An5E4n6r0y1Gv2RCDZ/r9yo7Sfaiu3Ksd5SWF/y3Y6pV4t6I6D00M"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- //notjs  -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+      integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        <% if (messages && messages.error && messages.error.length > 0) { %>
+        new Noty({
+          type: 'error',
+          text: '<%= messages.error[0] %>',
+          timeout: 3000, // display for 3 seconds
+          animation: {
+            open: 'animated fadeIn', // fade in animation
+            close: 'animated fadeOut', // fade out animation
+          },
+        }).show();
+        <% } else if (messages && messages.success && messages.success.length > 0) { %>
+        new Noty({
+          type: 'success',
+          text: '<%= messages.success[0] %>',
+          timeout: 3000, // display for 3 seconds
+          animation: {
+            open: 'animated fadeIn', // fade in animation
+            close: 'animated fadeOut', // fade out animation
+          },
+        }).show();
+        <% } %>
+      });
+    </script>
+  </body>
+</html>

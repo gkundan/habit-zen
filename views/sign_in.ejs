@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Hey There &#x1F44B;</h1>
+      <div class="main">
+        <div class="form-div">
+          <h3><%= title %> <span class="creative-element">🌟</span></h3>
+          <a class="signin-link" href="/sing-in-google">Sign In With Google</a>
+          <form action="/signIn-user" method="post">
+            <div>
+              <label for="email">Email:</label>
+            </div>
+            <div>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter Your Email here"
+              />
+            </div>
+            <div>
+              <label for="password">Password:</label>
+            </div>
+            <div>
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter Your password here"
+              />
+            </div>
+            <div class="">
+              <button class="submit-form-btn">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 ">
+      <h1 class="mt-4"><%= title %> <strong><%= user.name %></strong></h1>
+      <div class="card mt-4">
+        <div class="card-body">
+          <form method="POST" action="/habit/create">
+            <div class="form-group">
+              <label for="category">Category:</label>
+              <select class="form-control" id="category" name="category">
+                <option value="gym">Gym</option>
+                <option value="exercise">Exercise</option>
+                <option value="play">Play</option>
+                <option value="swimming">Swimming</option>
+                <option value="study">Study</option>
+                <option value="walking">Walking</option>
+                <option value="custom">Custom</option>
+              </select>
+            </div>
+            <div class="form-group" id="custom-category" style="display: none">
+              <label for="custom-category-name">Custom Category Name:</label>
+              <input type="text" class="form-control" id="custom-category-name" name="custom-category-name">
+            </div>
+            <div class="form-group">
+              <label for="name">Habit Description:</label>
+              <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="text-center">
+              <button class="btn" type="submit">Add Habit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="card mt-4">
+        <div class="card-body">
+          <a href="/logout" class="LogOut_btn">Log out</a>
+          <div class="clearfix"></div>
+          <% if (habits.length > 0) { %>
+          <table class="table mt-4">
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Name</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% habits.forEach((habit) => { %>
+              <tr>
+                <td><%= habit.category %></td>
+                <td>
+                  <a href="/habit/<%= habit._id %>/log"><%= habit.name %></a>
+                </td>
+                <td>
+                  <a href="/habit/<%= habit._id %>/delete" class="del_btn ">Delete</a>
+                  <form class="delete-habit-form" method="POST" action="/habit/<%= habit._id %>/delete">
+                    <input type="hidden" name="_method" value="DELETE">
+                  </form>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+          <% } else { %>
+          <p class="mt-4">You have no habits yet.</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Custom input -->
+<script>
+  const customCategory = document.getElementById("custom-category");
+  const categoryDropdown = document.getElementById("category");
+
+  categoryDropdown.addEventListener("change", () => {
+    if (categoryDropdown.value === "custom") {
+      customCategory.style.display = "block";
+    } else {
+      customCategory.style.display = "none";
+    }
+  });
+</script>

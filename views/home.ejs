@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="main">
+            <div class="welcome-div">
+              <h1>Welcome &#x1F600;</h1>
+              <p>
+                Small daily habits lead to big changes over time - HabitZone
+                helps you cultivate those habits. &#x1F389;&#x1F3C6;&#x1F4AA;
+              </p>
+
+              <div class="signin-div">
+                <a class="signin-link" href="/sign-in">Sign In</a>
+                <a class="signin-link" href="/sing-in-google">Sign In With Google</a>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-row">
+            <h4 class="text-center">
+              Are You New Here? Please Fill The Form! &#x1F913;
+            </h4>
+
+            <div class="form-div">
+              <form action="/create-user" method="post">
+                <div>
+                  <label for="name">Name:</label>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter Your Name here"
+                  />
+                </div>
+                <div>
+                  <label for="email">Email:</label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter Your Email here"
+                  />
+                </div>
+                <div>
+                  <label for="password">Password:</label>
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter Your password here"
+                  />
+                </div>
+                <div>
+                  <label for="confirm-password">Confirm Password:</label>
+                  <input
+                    type="password"
+                    name="confirm-password"
+                    placeholder="Confirm Your password here"
+                    required
+                  />
+                </div>
+                <div>
+                  <button class="submit-form-btn">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

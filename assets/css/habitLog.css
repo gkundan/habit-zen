@@ -1,0 +1,94 @@
+.log_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.entry-log {
+
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.entry-log h2 {
+  margin-top: 0;
+}
+
+.entry-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.entry-form input,
+.entry-form select {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.entry-form button {
+  display: block;
+  margin-top: 10px;
+  padding: 5px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.update-log {
+  
+  background-color: #fff8f8;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.update-log h2 {
+  margin-top: 0;
+}
+
+.update-log ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.update-log li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.update-log li span {
+  margin-right: 10px;
+}
+
+.update-log form {
+  display: flex;
+  align-items: center;
+}
+
+.update-log form label {
+  margin-right: 5px;
+}
+
+.update-log form input[type="radio"] {
+  margin-right: 10px;
+}
+
+.calendar-container {
+  width: 100%;
+}
+
+#calendar {
+  margin-top: 20px;
+}
